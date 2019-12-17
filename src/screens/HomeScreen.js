@@ -9,6 +9,7 @@ import {ImageCard} from '../components';
 
 
 class HomeScreen extends Component {
+
     componentDidMount(){
         this.props.getImages();
     }

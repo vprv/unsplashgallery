@@ -21,14 +21,19 @@ class ImageScreen extends Component {
     }
 
     render() {
-        const {image, container, buttonBar, buttonArrow} = styles;
-
+        const {image, container, buttonBar, buttonArrow, buttonBack, buttonBackView} = styles;
+        const {navigation} = this.props;
         const {index} = this.props.navigation.state.params;
         const {urls} = this.props.data[index];
 
         return (
 
             <View style={container}>
+                <View style={buttonBackView}>
+                    <TouchableOpacity onPress={() => navigation.goBack()}>
+                        <Icon name={'close'} style={buttonBack}/>
+                    </TouchableOpacity>
+                </View>
                 <Image style={image} source={{uri: urls.small}} resizeMode={'contain'}/>
                 <View style={buttonBar}>
                     <TouchableOpacity onPress={() => this._onPressLeft(index)}>
@@ -39,8 +44,6 @@ class ImageScreen extends Component {
                     </TouchableOpacity>
                 </View>
             </View>
-
-
         );
     }
 };
@@ -55,16 +58,29 @@ const styles = StyleSheet.create({
     },
     buttonBar: {
         position: 'absolute',
-        height: H,
+        marginTop: H / 2,
         width: W,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        opacity: 0.4,
     },
     buttonArrow: {
         color: 'white',
         fontSize: 48,
     },
+    buttonBack: {
+        fontSize: 40,
+        color: 'white',
+        opacity: 0.4,
+    },
+    buttonBackView: {
+        position: 'absolute',
+        zIndex: 1,
+        width: W,
+        padding: 10,
+        alignItems: 'flex-end',
+    }
 });
 
 const mapStateToProps = (state) => {
