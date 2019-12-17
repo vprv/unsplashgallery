@@ -1,4 +1,4 @@
 # unsplashgallery
 react native unsplash gallery
 
-![Example](https://imgur.com/Thm4gU6)
+![Example](https://imgur.com/Thm4gU6.gif)
